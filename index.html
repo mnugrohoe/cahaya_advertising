@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
 </head>
 
@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Buku</a>
+                            <a class="nav-link" aria-current="page" href="#">Buku</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Dekorasi</a>
@@ -53,12 +53,12 @@
         </nav>
     </header>
     <main>
-        <div class="jumbotron">
+        <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col col-md-5">
                     <div class="row">
-                        <div class="col">
-                            <img src="img/cahaya/produsen.png" alt="produsen" />
+                        <div class="col card-gb">
+                            <div><img src="img/cahaya/produsen.png" alt="produsen" /></div>
                         </div>
                         <div class="col">
                             <div class="card-title">
@@ -72,8 +72,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <img src="img/cahaya/hemat-waktu.png" alt="hemat waktu" />
+                        <div class="col card-gb">
+                            <div>
+                                <img src="img/cahaya/hemat-waktu.png" alt="hemat waktu" />
+                            </div>
                         </div>
                         <div class="col">
                             <div class="card-title">
@@ -88,8 +90,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <img src="img/cahaya/design-custom.png" alt="design costum" />
+                        <div class="col card-gb">
+                            <div>
+                                <img src="img/cahaya/design-custom.png" alt="design costum" />
+                            </div>
                         </div>
                         <div class="col">
                             <div class="card-title">
@@ -101,8 +105,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <img src="img/cahaya/design-template.png" alt="produsen" />
+                        <div class="col card-gb">
+                            <div>
+                                <img src="img/cahaya/design-template.png" alt="produsen" />
+                            </div>
                         </div>
                         <div class="col">
                             <div class="card-title">
@@ -116,7 +122,54 @@
                         </div>
                     </div>
                 </div>
-                <div class="col"></div>
+                <div class="col col-md-7">
+                    <div class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/slider/catalog.jpg" class="d-block w-100" alt="catalog" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/slider/kalender-dinding.jpg" class="d-block w-100" alt="kalender dinding" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/slider/menu.jpg" class="d-block w-100" alt="menu" />
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buku">
+            <h4>Katalog Buku</h4>
+            <div class="catalog">
+                <div class="catalog-item">
+                    <img src="img/buku/annual-report.jpg" alt="annual-report" />
+                </div>
+                <div class="catalog-item">
+                    <img src="img/buku/biografi.jpg" alt="biografi" />
+                </div>
+                <div class="catalog-item">
+                    <img src="img/buku/company-profile.jpg" alt="company-profile" />
+                </div>
             </div>
         </div>
     </main>

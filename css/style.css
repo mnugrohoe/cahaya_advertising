@@ -5,3 +5,12 @@ body {
 a.nav-link.active {
     border-bottom: 2px solid #a5a23c;
 }
+
+.carousel {
+    width: 500px;
+}
+
+.card-gb {
+    display: flex;
+    justify-content: end;
+}
