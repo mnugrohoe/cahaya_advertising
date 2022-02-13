@@ -1,9 +1,13 @@
 body {
-    font-family: raleway !important;
+    font-family: raleway;
 }
 
 a.nav-link.active {
     border-bottom: 2px solid #a5a23c;
+}
+
+.jumbotron {
+    padding-top: 2rem;
 }
 
 .carousel {
@@ -13,4 +17,16 @@ a.nav-link.active {
 .card-gb {
     display: flex;
     justify-content: end;
+}
+
+.catalog-title {
+    padding: 2rem 0rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.catalog-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
