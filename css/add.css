@@ -1,0 +1,70 @@
+* {
+    /* border: 0.1rem solid red; */
+}
+
+body {
+    font-family: raleway;
+}
+
+.row {
+    flex-direction: column;
+}
+
+.wajib {
+    padding: 0.1rem 0.2rem 0.2rem;
+    font-size: 1.2rem;
+    background-color: #f3f4f5;
+    color: #aaa6b0;
+}
+
+.card {
+    margin: 6px 0px;
+    box-shadow: 0 0 5px #b5b243;
+}
+
+.title {
+    padding: 6px;
+}
+
+.card>.row>.col {
+    padding: 6px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.submit {
+    margin-top: 10px;
+    background-color: #b5b243;
+    font-weight: bold;
+    padding: 0.5rem 3rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.submit:hover {
+    box-shadow: 0 0 5px #666;
+}
+
+textarea {
+    height: 6.5rem !important;
+}
+
+textarea:hover,
+input:hover,
+select:hover {
+    box-shadow: 0 0 5px #b5b243;
+}
+
+.form-floating>label {
+    padding: 1.5rem 0 0 2rem !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .card-img {
+        width: 10rem;
+    }
+    .row {
+        flex-direction: row;
+    }
+}

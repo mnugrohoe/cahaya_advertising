@@ -58,9 +58,27 @@ a.nav-link.active {
     justify-content: center;
 }
 
+.card .add {
+    width: 286px;
+    height: 286px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card .add i {
+    font-size: 60px;
+}
+
 .catalog-item {
     display: flex;
     justify-content: center;
+}
+
+.catalog-item>.card:hover {
+    cursor: pointer;
 }
 
 .catalog-title {
