@@ -14,7 +14,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+    <!-- JS Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/cahaya.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css" type="text/css" />
@@ -28,21 +33,26 @@
                 <a class="navbar-brand order-md-1" href="#"><img src="img/cahaya/cahayaadv.png" alt="cahaya adv" /></a>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#katalog_buku"><i class="bi bi-person-fill"></i
-              ></a>
+                        <i id="userIcon" class="bi bi-person-fill"></i>
+                        <div class="user-area" id="userArea">
+                            <!-- login/logout button -->
+                            <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
+                                        class="bi bi-box-arrow-in-right">
+                                        Sign In</i></a></div>
+                        </div>
                     </li>
                 </ul>
+
                 <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse order-md-2" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#katalog_buku">Buku</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#katalog_dekorasi">Dekorasi</a>
+                            <a class="nav-link" aria-current="page" href="#katalog_buku">Buku</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#katalog_dekorasi">Dekorasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#katalog_event">Event</a>
@@ -57,11 +67,10 @@
                             <a class="nav-link" href="#katalog_promosi">Promosi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#katalog_display">Signage & Display</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#katalog_souvenir">Souvenir</a>
+                            <a class="nav-link" href="#katalog_display">Signage & Display</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#katalog_souvenir">Souvenir</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#katalog_textile">Textile</a>
@@ -70,6 +79,26 @@
                 </div>
             </div>
         </nav>
+        <div class="login" id="login">
+            <i class="bi bi-x-octagon"></i>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </header>
     <main>
         <div class="container jumbotron">
@@ -93,19 +122,13 @@
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
                 <div class="col order-md-1 about p-3 p-md-0">
@@ -180,16 +203,16 @@
         <div id="katalog_buku" class="catalog-container">
             <h4 class="catalog-title">Katalog Buku</h4>
             <div class="row catalog">
-                <div class="col catalog-item">
+                <!-- <div class="col catalog-item">
                     <div class="card">
                         <img class="card-img-top" src="img/product/company-profile.jpg" alt="company-profile" />
                         <div class="card-footer">
                             <p>Company Profile</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div id="add-item" class="col catalog-item">
-                    <div class="card" onclick="location.href='add.php';">
+                    <div class="card" onclick="location.href='add.php?katalog=1';">
                         <div class="card-img-top add">
                             <i class="bi bi-plus-square"></i>
                         </div>

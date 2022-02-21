@@ -7,15 +7,39 @@ body {
     font-family: raleway;
 }
 
+.login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    visibility: hidden;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.login>i {
+    font-size: 1.5rem;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+}
+
+.login>form {
+    background-color: #eee;
+    width: 50%;
+    padding: 2rem;
+}
+
 a.nav-link.active {
     border-bottom: 2px solid #a5a23c;
 }
-
-
-/* 
-.container * {
-    border: 1px solid red;
-} */
 
 .nav-item i {
     font-size: 2rem;
@@ -42,11 +66,6 @@ a.nav-link.active {
     height: 100%;
     object-fit: contain;
 }
-
-
-/* .card * {
-    border: 1px solid black;
-} */
 
 .card-footer p {
     text-align: center;
@@ -85,6 +104,21 @@ a.nav-link.active {
     padding: 2rem 0rem;
     text-align: center;
     text-decoration: underline;
+}
+
+.user-area {
+    position: absolute;
+    visibility: hidden;
+}
+
+.user-area>div {
+    width: 100px;
+    background-color: black;
+}
+
+.user-area>div>a>i {
+    font-size: 1rem;
+    color: #ffcb31;
 }
 
 @media only screen and (min-width: 768px) {
