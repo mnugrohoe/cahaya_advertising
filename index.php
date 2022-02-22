@@ -1,3 +1,22 @@
+<?php
+session_start();
+print_r($_SESSION['role']);
+if(isset($_SESSION['role'])){
+    $role = $_SESSION['role'];
+} else {
+    $role = 'guest';
+}
+
+if(isset($_SESSION['errorLogin'])){
+    echo '<script>
+        alert("username/password salah!")
+    </script>';
+}
+
+require("element.php");
+print_r($role);
+?>
+
 <html lang="en">
 
 <head>
@@ -8,18 +27,19 @@
     <title>Cahaya Advertising</title>
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
     <!-- JS Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cahaya.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css" type="text/css" />
@@ -39,11 +59,16 @@
                             <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
                                         class="bi bi-box-arrow-in-right">
                                         Sign In</i></a></div>
+                            <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
+                                        class="bi bi-box-arrow-in-right">
+                                        SESSION DESTROY</i></a></div>
                         </div>
                     </li>
                 </ul>
 
-                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse order-md-2" id="navbarSupportedContent">
@@ -79,26 +104,7 @@
                 </div>
             </div>
         </nav>
-        <div class="login" id="login">
-            <i class="bi bi-x-octagon"></i>
-            <form id="loginForm">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+        <?php formLogin();?>
     </header>
     <main>
         <div class="container jumbotron">
@@ -106,9 +112,12 @@
                 <div class="col order-md-2 carousel-container">
                     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -121,11 +130,13 @@
                                 <img src="img/slider/menu.jpg" class="d-block" alt="menu" />
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
@@ -211,19 +222,14 @@
                         </div>
                     </div>
                 </div> -->
-                <div id="add-item" class="col catalog-item">
-                    <div class="card" onclick="location.href='add.php?katalog=1';">
-                        <div class="card-img-top add">
-                            <i class="bi bi-plus-square"></i>
-                        </div>
-                        <div class="card-footer">
-                            <p>Add</p>
-                        </div>
-                    </div>
-                </div>
+                <?php 
+                if($role == "admin"){addItem(1);}
+                ?>
             </div>
         </div>
     </main>
 </body>
 
 </html>
+
+<script src="js/cahaya.js" type="text/javascript"></script>

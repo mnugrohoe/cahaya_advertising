@@ -1,7 +1,9 @@
 function preview() {
     gambar.src = URL.createObjectURL(target.files[0]);
 }
+console.log("cahaya.js loaded");
 
+// show hide user area
 $("#userArea").css(
     "marginLeft",
     $("#userIcon").css("width").replace("px", "") -
@@ -14,6 +16,9 @@ $("#userIcon, #userArea")
     .mouseleave(() => {
         $("#userArea").css("visibility", "hidden");
     });
+// end show hide user area
+
+// toogle login button
 $("#loginButton").click(function() {
     $("#login").css("visibility", "visible");
 });
@@ -28,3 +33,4 @@ $("#login").click(function() {
 $("#loginForm").click(function() {
     containerClick = false;
 });
+// end login

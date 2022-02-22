@@ -1,10 +1,10 @@
 <?php
 $servername = "localhost";
 $database = "cahaya_adv";
-$username = "root";
-$password = "";
+$usernameMySql = "root";
+$passwordMySql = "";
 
-$mysqli = mysqli_connect($servername, $username, $password, $database);
+$mysqli = mysqli_connect($servername, $usernameMySql, $passwordMySql, $database);
 
 
 function add($katalog_id){

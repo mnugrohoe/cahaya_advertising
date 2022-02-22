@@ -1,8 +1,20 @@
-<html lang="en">
 <?php 
+session_start();
+
+if(!isset($_SESSION['role'])){
+    header('Location: index.php');
+    exit;
+} else {
+    if($_SESSION['role'] != 'admin'){
+        header('Location: index.php');
+        exit;
+    };
+}
+
 include_once("connect.php");
 $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
 ?>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -12,13 +24,15 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
 
     <link rel="shortcut icon" href="img/cahaya/favicon.ico" type="image/x-icon" />
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
     <!-- JS -->
@@ -45,7 +59,8 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                     </div>
                     <div class="col">
                         <img class="card-img" id="gambar" src="img//cahaya/upload.jpg" alt="gambar" />
-                        <input type="file" onchange="preview()" class="form-control mt-2" name="gambar" accept="image/png, image/jpeg" required />
+                        <input type="file" onchange="preview()" class="form-control mt-2" name="gambar"
+                            accept="image/png, image/jpeg" required />
                     </div>
                 </div>
             </div>
@@ -88,7 +103,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" class="form-control" min="0" name="harga" placeholder="Harga" required/>
+                        <input type="number" class="form-control" min="0" name="harga" placeholder="Harga" required />
                     </div>
                 </div>
             </div>
@@ -103,7 +118,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                         </div>
                     </div>
                     <div class="col">
-                        <input type="number" min="0" class="form-control" name="stock" placeholder="Stock" required/>
+                        <input type="number" min="0" class="form-control" name="stock" placeholder="Stock" required />
                     </div>
                 </div>
             </div>
@@ -116,25 +131,22 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                         <div class="card-title">
                             <h4>Deskripsi Product</h4>
                         </div>
-                        <div class="card-subtitle">Pastikan deskripsi produk memuat spesifikasi, ukuran, bahan. Semakin detail, semakin berguna bagi pembeli, cantumkan max. 250 karakter agar pembeli semakin mudah mengerti dan menemukan produk anda</div>
+                        <div class="card-subtitle">Pastikan deskripsi produk memuat spesifikasi, ukuran, bahan. Semakin
+                            detail, semakin berguna bagi pembeli, cantumkan max. 250 karakter agar pembeli semakin mudah
+                            mengerti dan menemukan produk anda</div>
                     </div>
                     <div class="form-floating col">
-                        <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">Comments</label>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <input type="submit" class="submit" name="submit" value="Submit" />
+                <input type="submit" class="submit" name="login" value="Submit" />
             </div>
         </form>
     </main>
 </body>
 
 </html>
-
-<?php
-if(isset($_POST['submit'])){
-  print_r($_POST);
-}
-?>
