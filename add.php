@@ -35,17 +35,46 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
-    <!-- JS -->
-    <script type="text/javascript" src="js/cahaya.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="css/nav.css" type="text/css" />
     <link rel="stylesheet" href="css/add.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand order-md-1" href="index.php"><img src="img/cahaya/cahayaadv.png"
+                        alt="cahaya adv" /></a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-md-3">
+                    <li class="nav-item">
+                        <i id="userIcon" class="bi bi-person-fill"></i>
+                        <div class="user-area" id="userArea">
+                            <!-- login/logout button -->
+                            <ul>
+                                <li>
+                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
+                                                class="bi bi-box-arrow-in-right">
+                                                Sign In</i></a></div>
+                                </li>
+                                <li>
+                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
+                                                class="bi bi-box-arrow-in-right">
+                                                SESSION DESTROY</i></a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <main>
-        <form action="add.php" class="container" method="post">
+        <form action="add.php" class="container" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="title">
                     <h3>Upload Product</h3>
@@ -58,7 +87,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                         <div class="card-subtitle">Format gambar .jpg .jpeg .png</div>
                     </div>
                     <div class="col">
-                        <img class="card-img" id="gambar" src="img//cahaya/upload.jpg" alt="gambar" />
+                        <img class="card-img" id="gambarprev" src="img//cahaya/upload.jpg" alt="gambar" />
                         <input type="file" onchange="preview()" class="form-control mt-2" name="gambar"
                             accept="image/png, image/jpeg" required />
                     </div>
@@ -87,7 +116,8 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                     <div class="col">
                         <select type="text" class="form-select" name="katalog">
                             <?php while($katalog = mysqli_fetch_array($array_katalog)){
-                                echo "<option value=".$katalog['id_katalog'].">".$katalog['nama_katalog']."</option>";}?>
+                                echo "<option ".(($katalog['id_katalog']==$_SESSION['katalog']) ? 'selected' : '' )."
+                                    value=".$katalog['id_katalog'].">".$katalog['nama_katalog']."</option>";}?>
                         </select>
                     </div>
                 </div>
@@ -150,3 +180,47 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
 </body>
 
 </html>
+
+<?php
+if(isset($_POST['login'])){
+    $statusMsg = '';
+    $nama = ucwords($_POST['nama']);
+    $id_katalog = $_POST['katalog'];
+    $harga = $_POST['harga'];
+    $stock = $_POST['stock'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $dir = "img/product/";
+    $fileType = pathinfo($_FILES['gambar']['name'],PATHINFO_EXTENSION);
+    $nama_gambar = $id_katalog . "_" . str_replace(' ', '_', strtolower($nama)) . "." . $fileType;
+    $path = $dir . $nama_gambar;
+
+    if(!empty($_FILES["gambar"]["name"])){
+        $type = array('jpg','png','jpeg');
+        if(in_array($fileType, $type)){
+            if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $path)){
+                $insert = mysqli_query($mysqli, "INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga`, `gambar`, `id_katalog`, `stock`, `deskripsi`) VALUES 
+                ( NULL, '$nama', '$harga', '$nama_gambar', '$id_katalog', '$stock', '$deskripsi'); ");
+
+                if($insert){
+                    $statusMsg = "The file ".$nama_gambar. " has been uploaded successfully.";
+                }else{
+                    $statusMsg = "File upload failed, please try again.";
+                }
+            }else{
+                $statusMsg = "Sorry, there was an error uploading your file.";
+            }
+        }else{
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+        }
+    }else{
+        $statusMsg = 'Please select a file to upload.';
+    }
+
+    // Display status message
+    echo $statusMsg;
+}
+?>
+
+<!-- JS -->
+<script type="text/javascript" src="js/cahaya.js"></script>

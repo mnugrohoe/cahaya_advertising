@@ -1,11 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION['role']);
-if(isset($_SESSION['role'])){
-    $role = $_SESSION['role'];
-} else {
-    $role = 'guest';
-}
+require("element.php");
 
 if(isset($_SESSION['errorLogin'])){
     echo '<script>
@@ -13,8 +8,6 @@ if(isset($_SESSION['errorLogin'])){
     </script>';
 }
 
-require("element.php");
-print_r($role);
 ?>
 
 <html lang="en">
@@ -43,6 +36,7 @@ print_r($role);
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css" type="text/css" />
+    <link rel="stylesheet" href="css/nav.css" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
 </head>
 
@@ -50,18 +44,25 @@ print_r($role);
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand order-md-1" href="#"><img src="img/cahaya/cahayaadv.png" alt="cahaya adv" /></a>
+                <a class="navbar-brand order-md-1" href="index.php"><img src="img/cahaya/cahayaadv.png"
+                        alt="cahaya adv" /></a>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-md-3">
                     <li class="nav-item">
                         <i id="userIcon" class="bi bi-person-fill"></i>
                         <div class="user-area" id="userArea">
                             <!-- login/logout button -->
-                            <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
-                                        class="bi bi-box-arrow-in-right">
-                                        Sign In</i></a></div>
-                            <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
-                                        class="bi bi-box-arrow-in-right">
-                                        SESSION DESTROY</i></a></div>
+                            <ul>
+                                <li>
+                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
+                                                class="bi bi-box-arrow-in-right">
+                                                Sign In</i></a></div>
+                                </li>
+                                <li>
+                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
+                                                class="bi bi-box-arrow-in-right">
+                                                SESSION DESTROY</i></a></div>
+                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
@@ -214,7 +215,8 @@ print_r($role);
         <div id="katalog_buku" class="catalog-container">
             <h4 class="catalog-title">Katalog Buku</h4>
             <div class="row catalog">
-                <!-- <div class="col catalog-item">
+                <!-- 
+                <div class="col catalog-item">
                     <div class="card">
                         <img class="card-img-top" src="img/product/company-profile.jpg" alt="company-profile" />
                         <div class="card-footer">
@@ -222,8 +224,9 @@ print_r($role);
                         </div>
                     </div>
                 </div> -->
-                <?php 
-                if($role == "admin"){addItem(1);}
+                <?php
+                readKatalog(1); 
+                addItem(1);
                 ?>
             </div>
         </div>

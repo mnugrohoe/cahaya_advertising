@@ -1,7 +1,17 @@
 function preview() {
-    gambar.src = URL.createObjectURL(target.files[0]);
+    // gambar.src = URL.createObjectURL(target.files[0]);
+    var file = $("input[type=file]").get(0).files[0];
+
+    if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function() {
+            $("#gambarprev").attr("src", reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    }
 }
-console.log("cahaya.js loaded");
 
 // show hide user area
 $("#userArea").css(

@@ -37,18 +37,6 @@ body {
     padding: 2rem;
 }
 
-a.nav-link.active {
-    border-bottom: 2px solid #a5a23c;
-}
-
-.nav-item i {
-    font-size: 2rem;
-}
-
-.jumbotron {
-    padding-top: 4.5rem;
-}
-
 .carousel-container {
     display: flex;
     align-content: center;
@@ -104,21 +92,6 @@ a.nav-link.active {
     padding: 2rem 0rem;
     text-align: center;
     text-decoration: underline;
-}
-
-.user-area {
-    position: absolute;
-    visibility: hidden;
-}
-
-.user-area>div {
-    width: 100px;
-    background-color: black;
-}
-
-.user-area>div>a>i {
-    font-size: 1rem;
-    color: #ffcb31;
 }
 
 @media only screen and (min-width: 768px) {

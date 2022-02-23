@@ -1,4 +1,11 @@
 <?php 
+include_once('connect.php');
+if(isset($_SESSION['role'])){
+  $role = $_SESSION['role'];
+} else {
+  $role = 'guest';
+};
+
 function formLogin(){
   echo "
   <div class='login' id='login'>
@@ -24,17 +31,40 @@ function formLogin(){
 }
 
 function addItem($katalog){
-  echo "
-  <div id='add-item' class='col catalog-item'>
-    <div class='card' onclick='location.href`add.php?katalog=$katalog`;'>
-      <div class='card-img-top add'>
-        <i class='bi bi-plus-square'></i>
-      </div>
-      <div class='card-footer'>
-        <p>Add</p>
+  global $role;
+  if($role == "admin"){
+    $_SESSION['katalog'] = $katalog;
+    echo "
+    <div id='add-item' class='col catalog-item'>
+      <div class='card' onclick=\"location.href='add.php'\">
+        <div class='card-img-top add'>
+          <i class='bi bi-plus-square'></i>
+        </div>
+        <div class='card-footer'>
+          <p>Add</p>
+        </div>
       </div>
     </div>
-  </div>
-  ";
+    ";
+  ;}
+}
+
+function readKatalog($katalog){
+  global $mysqli;
+  $query =  "SELECT * FROM `produk` WHERE id_katalog = $katalog ORDER BY id_produk DESC";
+  $data_produk = mysqli_query($mysqli, $query);
+
+   while($produk = mysqli_fetch_array($data_produk)){
+     echo "
+         <div class='col catalog-item'>
+           <div class='card'>
+             <img class='card-img-top' src='img/product/".$produk['gambar']."' alt='".str_replace(' ', '-',strtolower($produk['nama_produk']))."' />
+             <div class='card-footer'>
+               <p>".$produk['nama_produk']."</p>
+             </div>
+           </div>
+         </div>
+     ";
+   }
 }
 ?>

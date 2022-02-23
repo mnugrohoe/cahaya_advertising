@@ -1,0 +1,37 @@
+.navbar-brand>img {
+    height: 2rem;
+}
+
+a.nav-link.active {
+    border-bottom: 2px solid #a5a23c;
+}
+
+.nav-item i {
+    font-size: 2rem;
+}
+
+.user-area {
+    position: absolute;
+    visibility: hidden;
+}
+
+.user-area>ul>li {
+    list-style-type: none;
+}
+
+.user-area>ul>li>div {
+    background-color: black;
+}
+
+.user-area>ul>li>div>a {
+    min-width: 200px;
+}
+
+.user-area>ul>li>div>a>i {
+    font-size: 1rem;
+    color: #ffcb31;
+}
+
+main {
+    padding-top: 4rem;
+}
