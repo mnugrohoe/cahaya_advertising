@@ -51,18 +51,7 @@ if(isset($_SESSION['errorLogin'])){
                         <i id="userIcon" class="bi bi-person-fill"></i>
                         <div class="user-area" id="userArea">
                             <!-- login/logout button -->
-                            <ul>
-                                <li>
-                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
-                                                class="bi bi-box-arrow-in-right">
-                                                Sign In</i></a></div>
-                                </li>
-                                <li>
-                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
-                                                class="bi bi-box-arrow-in-right">
-                                                SESSION DESTROY</i></a></div>
-                                </li>
-                            </ul>
+                            <?php userArea();?>
                         </div>
                     </li>
                 </ul>
@@ -105,7 +94,6 @@ if(isset($_SESSION['errorLogin'])){
                 </div>
             </div>
         </nav>
-        <?php formLogin();?>
     </header>
     <main>
         <div class="container jumbotron">
@@ -214,25 +202,90 @@ if(isset($_SESSION['errorLogin'])){
         </div>
         <div id="katalog_buku" class="catalog-container">
             <h4 class="catalog-title">Katalog Buku</h4>
-            <div class="row catalog">
-                <!-- 
-                <div class="col catalog-item">
-                    <div class="card">
-                        <img class="card-img-top" src="img/product/company-profile.jpg" alt="company-profile" />
-                        <div class="card-footer">
-                            <p>Company Profile</p>
-                        </div>
-                    </div>
-                </div> -->
+            <div class="row catalog row-cols-2 row-cols-md-5">
                 <?php
                 readKatalog(1); 
                 addItem(1);
                 ?>
             </div>
         </div>
+        <div id="katalog_dekorasi" class="catalog-container">
+            <h4 class="catalog-title">Katalog Dekorasi</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(2); 
+                addItem(2);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_event" class="catalog-container">
+            <h4 class="catalog-title">Katalog Event</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(3); 
+                addItem(3);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_kemasan" class="catalog-container">
+            <h4 class="catalog-title">Katalog Kemasan</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(4); 
+                addItem(4);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_stationary" class="catalog-container">
+            <h4 class="catalog-title">Katalog Stationary</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(5); 
+                addItem(5);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_promosi" class="catalog-container">
+            <h4 class="catalog-title">Katalog Promosi</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(6); 
+                addItem(6);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_display" class="catalog-container">
+            <h4 class="catalog-title">Katalog Signage and Display</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(7); 
+                addItem(7);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_souvenir" class="catalog-container">
+            <h4 class="catalog-title">Katalog Souvenir</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(8); 
+                addItem(8);
+                ?>
+            </div>
+        </div>
+        <div id="katalog_textile" class="catalog-container">
+            <h4 class="catalog-title">Katalog Textile</h4>
+            <div class="row catalog row-cols-2 row-cols-md-5">
+                <?php
+                readKatalog(9); 
+                addItem(9);
+                ?>
+            </div>
+        </div>
     </main>
+    <footer>
+        <!--  -->
+    </footer>
 </body>
 
 </html>
-
 <script src="js/cahaya.js" type="text/javascript"></script>

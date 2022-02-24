@@ -43,4 +43,9 @@ $("#login").click(function() {
 $("#loginForm").click(function() {
     containerClick = false;
 });
-// end login
+// end
+
+$("#navbarSupportedContent a").on("click", function() {
+    $("#navbarSupportedContent a").removeClass("selected");
+    $(this).addClass("selected");
+});

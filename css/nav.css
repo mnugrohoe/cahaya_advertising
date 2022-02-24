@@ -2,8 +2,14 @@
     height: 2rem;
 }
 
-a.nav-link.active {
+#navbarSupportedContent .selected {
     border-bottom: 2px solid #a5a23c;
+}
+
+#navbarSupportedContent a:hover {
+    border-top: 1px solid #a5a23c;
+    border-bottom: 1px solid #a5a23c;
+    color: #a5a23c;
 }
 
 .nav-item i {
@@ -12,26 +18,60 @@ a.nav-link.active {
 
 .user-area {
     position: absolute;
+    top: 0;
     visibility: hidden;
+}
+
+.user-area>ul {
+    margin-top: 3rem;
+    background-color: #333;
+    padding: 1rem;
 }
 
 .user-area>ul>li {
     list-style-type: none;
-}
-
-.user-area>ul>li>div {
-    background-color: black;
-}
-
-.user-area>ul>li>div>a {
     min-width: 200px;
 }
 
-.user-area>ul>li>div>a>i {
-    font-size: 1rem;
-    color: #ffcb31;
+.user-area>ul>li>a:hover {
+    background-color: #666;
+}
+
+.user-area>ul>li>a>i {
+    font-size: 1rem !important;
+    color: #ffcb31 !important;
 }
 
 main {
     padding-top: 4rem;
+}
+
+.login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    visibility: hidden;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.login>i {
+    font-size: 1.5rem;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+}
+
+.login>form {
+    background-color: #eee;
+    width: 50%;
+    padding: 2rem;
 }

@@ -7,36 +7,6 @@ body {
     font-family: raleway;
 }
 
-.login {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    visibility: hidden;
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-.login>i {
-    font-size: 1.5rem;
-    color: white;
-    position: fixed;
-    right: 0;
-    top: 0;
-    margin: 1rem;
-}
-
-.login>form {
-    background-color: #eee;
-    width: 50%;
-    padding: 2rem;
-}
-
 .carousel-container {
     display: flex;
     align-content: center;
@@ -65,9 +35,17 @@ body {
     justify-content: center;
 }
 
+.card-add {
+    width: 100%;
+}
+
+.card-footer {
+    margin-top: auto;
+}
+
 .card .add {
-    width: 286px;
-    height: 286px;
+    min-height: 150px;
+    height: 100%;
     background-color: #eee;
     display: flex;
     justify-content: center;
@@ -79,7 +57,12 @@ body {
     font-size: 60px;
 }
 
+.catalog-container {
+    padding: 2rem 1rem 0rem 1rem;
+}
+
 .catalog-item {
+    padding-top: 1.5rem;
     display: flex;
     justify-content: center;
 }
@@ -89,7 +72,7 @@ body {
 }
 
 .catalog-title {
-    padding: 2rem 0rem;
+    padding-top: 2rem;
     text-align: center;
     text-decoration: underline;
 }
@@ -99,15 +82,12 @@ body {
         height: 25rem;
         width: 25rem;
     }
-    .card {
-        width: 18rem;
-    }
     .card-gb {
         display: flex;
         justify-content: end;
         width: fit-content;
     }
     .jumbotron {
-        padding-top: 6rem;
+        padding-top: 1rem;
     }
 }

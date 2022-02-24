@@ -12,7 +12,9 @@ if(!isset($_SESSION['role'])){
 }
 
 include_once("connect.php");
-$array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
+require('element.php');
+$array_katalog = mysqli_query($mysqli, "SELECT * FROM `katalog`");
+$id_katalog = ed($_GET['katalog'],'d');
 ?>
 <html lang="en">
 
@@ -55,18 +57,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                         <i id="userIcon" class="bi bi-person-fill"></i>
                         <div class="user-area" id="userArea">
                             <!-- login/logout button -->
-                            <ul>
-                                <li>
-                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="#"><i
-                                                class="bi bi-box-arrow-in-right">
-                                                Sign In</i></a></div>
-                                </li>
-                                <li>
-                                    <div id="loginButton"><a class="nav-link" aria-current="page" href="logout.php"><i
-                                                class="bi bi-box-arrow-in-right">
-                                                SESSION DESTROY</i></a></div>
-                                </li>
-                            </ul>
+                            <?php userArea();?>
                         </div>
                     </li>
                 </ul>
@@ -116,7 +107,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                     <div class="col">
                         <select type="text" class="form-select" name="katalog">
                             <?php while($katalog = mysqli_fetch_array($array_katalog)){
-                                echo "<option ".(($katalog['id_katalog']==$_SESSION['katalog']) ? 'selected' : '' )."
+                                echo "<option ".(($katalog['id_katalog'] == $id_katalog) ? 'selected' : '' )." 
                                     value=".$katalog['id_katalog'].">".$katalog['nama_katalog']."</option>";}?>
                         </select>
                     </div>
@@ -168,7 +159,7 @@ $array_katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
                     <div class="form-floating col">
                         <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here"
                             id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea">Comments</label>
+                        <label for="floatingTextarea">Deskripsi</label>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,7 @@
-<?php 
+<?php
 include_once('connect.php');
+require('func.php');
+
 if(isset($_SESSION['role'])){
   $role = $_SESSION['role'];
 } else {
@@ -33,10 +35,9 @@ function formLogin(){
 function addItem($katalog){
   global $role;
   if($role == "admin"){
-    $_SESSION['katalog'] = $katalog;
-    echo "
+  echo "
     <div id='add-item' class='col catalog-item'>
-      <div class='card' onclick=\"location.href='add.php'\">
+      <div class='card card-add' onclick=\"location.href='add.php?katalog=".ed($katalog)."'\">
         <div class='card-img-top add'>
           <i class='bi bi-plus-square'></i>
         </div>
@@ -56,7 +57,7 @@ function readKatalog($katalog){
 
    while($produk = mysqli_fetch_array($data_produk)){
      echo "
-         <div class='col catalog-item'>
+         <div class='col catalog-item' onclick=\"location.href='details.php?id=".ed($produk['id_produk'])."' \">
            <div class='card'>
              <img class='card-img-top' src='img/product/".$produk['gambar']."' alt='".str_replace(' ', '-',strtolower($produk['nama_produk']))."' />
              <div class='card-footer'>
@@ -67,4 +68,35 @@ function readKatalog($katalog){
      ";
    }
 }
+
+function userArea(){
+  global $role;
+  if($role == 'guest'){
+    loginMenu();
+    formLogin();
+  } else {
+    echo "
+    <ul>
+      <li><a><i>Hi ".getNama()."</a></i></li>
+      <li>
+        <a class='nav-link' aria-current='page' href='logout.php'><i class='bi bi-box-arrow-left'> Log Out</i></a>
+      </li>
+    </ul>
+    ";
+  }
+}
+
+function loginMenu(){
+  echo "
+  <ul>
+    <li>
+      <a id='loginButton' class='nav-link' aria-current='page' href='#'><i class='bi bi-box-arrow-in-right'> Sign In</i></a>
+    </li>
+    <li>
+      <a id='loginButton' class='nav-link' aria-current='page' href='register.php'><i class='bi bi-pencil-square'> Register</i></a>
+    </li>
+  </ul>
+  ";
+}
+
 ?>
