@@ -26,6 +26,7 @@ function formLogin(){
         <input type='checkbox' class='form-check-input' id='exampleCheck1'>
         <label class='form-check-label' for='exampleCheck1'>Check me out</label>
       </div> -->
+      <div>Belum punya akun? <a href='register.php'>Daftar</a></div>
       <button type='submit' name='login' class='btn btn-primary'>Submit</button>
     </form>
   </div>
@@ -99,4 +100,47 @@ function loginMenu(){
   ";
 }
 
-?>
+
+function actionCard(){
+  global $role;
+  if($role == 'admin'){
+    #form admin
+  } else {
+    echo "
+    <div class='action-card'>
+      <div class='labelAturJumlah'>Atur jumlah</div>
+      <div class='jumlah-order d-flex align-items-center'>
+        <div class='jumlah-editor d-flex align-items-center'>
+          <div>
+            <button disabled><svg class='minus-editor' viewBox='0 0 24 24' width='18px' height='18px'
+                style='display: inline-block; vertical-align: middle;'>
+                <path d='M19 13H5c-.6 0-1-.4-1-1s.4-1 1-1h14c.6 0 1 .4 1 1s-.4 1-1 1z'>
+                </path>
+              </svg></button>
+          </div>
+          <div>
+            <input class='jumlah form-control' name='jumlah' type='number' min='0' value='1'>
+          </div>
+          <div>
+            <button><svg class='plus-editor' viewBox='0 0 24 24' width='18px' height='18px'
+                style='display: inline-block; vertical-align: middle;'>
+                <path d='M19 11h-6V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z'>
+                </path>
+              </svg></button>
+          </div>
+        </div>
+        <div class='ms-auto'>Sisa stock: '<b>'".$produk['stock']."'</b>'
+</div>
+</div>
+<div class='sub-total d-flex'>
+  <div>Subtotal</div>
+  <div class='d-flex ms-auto'>
+    <div><b>Rp&nbsp</b></div>
+    <div>
+      <b></b>
+</div>
+</div>
+</div>
+<div class='beli'><button name='submit'>Beli Sekarang</button></div>
+</div>
+";} } ?>

@@ -1,0 +1,119 @@
+* {
+    /* border: 1px solid red; */
+}
+
+body {
+    font-family: Raleway;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input,
+textarea {
+    border: none !important;
+    resize: none;
+}
+
+input[name="nama_produk"] {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.labelHarga span,
+input[name="harga"] {
+    padding-right: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+textarea.form-control {
+    font-size: 1rem;
+}
+
+.form-control {
+    padding: 0;
+}
+
+input:disabled,
+textarea:disabled {
+    background-color: white !important;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelDesk {
+    margin: 2rem 0px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.labelDesk span {
+    font-size: 1.1em;
+    display: inline-block;
+    padding: 10px 15px;
+    border-bottom: 3px solid #a5a23c;
+}
+
+.jumlah-editor {
+    width: 8rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.jumlah-editor a {
+    padding: 3px;
+    border: none;
+    background-color: white;
+}
+
+.minus-editor>path {
+    fill: #a5a23c;
+}
+
+input[name="jumlah"] {
+    font-size: 1.5rem;
+    padding: 4px 0px;
+    text-align: center;
+}
+
+.form-control:read-only {
+    background-color: white;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.plus-editor>path {
+    fill: #a5a23c;
+}
+
+.action-card {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.beli button {
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.labelAturJumlah {
+    font-weight: bold;
+}
+
+.jumlah-order {
+    margin: 10px 0px;
+}

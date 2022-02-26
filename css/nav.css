@@ -75,3 +75,7 @@ main {
     width: 50%;
     padding: 2rem;
 }
+
+.login button {
+    margin-top: 10px;
+}
