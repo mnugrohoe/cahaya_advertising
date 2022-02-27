@@ -1,11 +1,11 @@
-<?php 
+<?php
 session_start();
 
-if(!isset($_SESSION['role'])){
+if (!isset($_SESSION['role'])) {
     header('Location: index.php');
     exit;
 } else {
-    if($_SESSION['role'] != 'admin'){
+    if ($_SESSION['role'] != 'admin') {
         header('Location: index.php');
         exit;
     };
@@ -14,7 +14,7 @@ if(!isset($_SESSION['role'])){
 include_once("connect.php");
 require('element.php');
 $array_katalog = mysqli_query($mysqli, "SELECT * FROM `katalog`");
-$id_katalog = ed($_GET['katalog'],'d');
+$id_katalog = ed($_GET['katalog'], 'd');
 ?>
 <html lang="en">
 
@@ -65,7 +65,9 @@ $id_katalog = ed($_GET['katalog'],'d');
         </nav>
     </header>
     <main>
-        <form action="add.php" class="container" method="post" enctype="multipart/form-data">
+        <form
+            action="add.php?katalog=<?php echo $_GET['katalog']?>"
+            class="container" method="post" enctype="multipart/form-data">
             <div class="card">
                 <div class="title">
                     <h3>Upload Product</h3>
@@ -106,9 +108,10 @@ $id_katalog = ed($_GET['katalog'],'d');
                     </div>
                     <div class="col">
                         <select type="text" class="form-select" name="katalog">
-                            <?php while($katalog = mysqli_fetch_array($array_katalog)){
-                                echo "<option ".(($katalog['id_katalog'] == $id_katalog) ? 'selected' : '' )." 
-                                    value=".$katalog['id_katalog'].">".$katalog['nama_katalog']."</option>";}?>
+                            <?php while ($katalog = mysqli_fetch_array($array_katalog)) {
+    echo "<option ".(($katalog['id_katalog'] == $id_katalog) ? 'selected' : '')." 
+                                    value=".$katalog['id_katalog'].">".$katalog['nama_katalog']."</option>";
+}?>
                         </select>
                     </div>
                 </div>
@@ -173,7 +176,7 @@ $id_katalog = ed($_GET['katalog'],'d');
 </html>
 
 <?php
-if(isset($_POST['login'])){
+if (isset($_POST['login'])) {
     $statusMsg = '';
     $nama = ucwords($_POST['nama']);
     $id_katalog = $_POST['katalog'];
@@ -182,34 +185,33 @@ if(isset($_POST['login'])){
     $deskripsi = $_POST['deskripsi'];
 
     $dir = "img/product/";
-    $fileType = pathinfo($_FILES['gambar']['name'],PATHINFO_EXTENSION);
+    $fileType = pathinfo($_FILES['gambar']['name'], PATHINFO_EXTENSION);
     $nama_gambar = $id_katalog . "_" . str_replace(' ', '_', strtolower($nama)) . "." . $fileType;
     $path = $dir . $nama_gambar;
 
-    if(!empty($_FILES["gambar"]["name"])){
+    if (!empty($_FILES["gambar"]["name"])) {
         $type = array('jpg','png','jpeg');
-        if(in_array($fileType, $type)){
-            if(move_uploaded_file($_FILES["gambar"]["tmp_name"], $path)){
+        if (in_array($fileType, $type)) {
+            if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $path)) {
                 $insert = mysqli_query($mysqli, "INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga`, `gambar`, `id_katalog`, `stock`, `deskripsi`) VALUES 
                 ( NULL, '$nama', '$harga', '$nama_gambar', '$id_katalog', '$stock', '$deskripsi'); ");
 
-                if($insert){
-                    $statusMsg = "The file ".$nama_gambar. " has been uploaded successfully.";
-                }else{
+                if ($insert) {
+                    $statusMsg = $nama. " has been added successfully.";
+                } else {
                     $statusMsg = "File upload failed, please try again.";
                 }
-            }else{
+            } else {
                 $statusMsg = "Sorry, there was an error uploading your file.";
             }
-        }else{
+        } else {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
         }
-    }else{
+    } else {
         $statusMsg = 'Please select a file to upload.';
     }
 
-    // Display status message
-    echo $statusMsg;
+    echo "<script>alert('".$statusMsg."');</script>";
 }
 ?>
 

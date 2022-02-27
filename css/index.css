@@ -35,12 +35,9 @@ body {
     justify-content: center;
 }
 
-.card-add {
+.card-add,
+.card {
     width: 100%;
-}
-
-.card-footer {
-    margin-top: auto;
 }
 
 .card .add {
