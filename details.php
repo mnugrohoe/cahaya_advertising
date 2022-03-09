@@ -89,7 +89,7 @@ $produk = mysqli_fetch_assoc(mysqli_query($mysqli, $query));
 
             <img id="gambarprev" src="img/product/<?php echo $produk['gambar'];?>" alt="">
             <?php if ($role == 'admin') {
-    echo "<input type=\"file\" onchange=\"preview()\" class=\" pt-3\" name=\"gambar\" accept=\"image/png, image/jpeg\" style=\"visibility: hidden;\">";
+    echo "<input type=\"file\" onchange=\"preview()\" class=\" pt-3\" name=\"gambar\" accept=\"image/png, image/jpeg\" style=\"display: none;\">";
 }
                         ?>
           </div>

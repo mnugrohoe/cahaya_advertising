@@ -60,15 +60,12 @@ function jumlahOrder(action) {
 var nama_produk, harga_produk, deskripsi_produk, gambar_produk;
 
 $("#edit").click(function() {
-    $("#edit").css("visibility", "hidden");
-    $("#delete").css("visibility", "hidden");
-    $("#cancel").css("visibility", "visible");
-    $(".prev-stock").css("visibility", "visible");
-    $("input[name = 'gambar']").css("visibility", "visible");
-    $("input").removeAttr("readonly");
-    $("textarea").removeAttr("readonly");
-    $(".action-card button").attr("disabled", false);
-    $("#katalog").attr("disabled", false);
+    $("#edit, #delete").css("display", "none");
+    $("#cancel").css("display", "inline");
+    $(".prev-stock, input[name = 'gambar']").css("display", "block");
+    $("input, textarea").removeAttr("readonly");
+    $(".action-card button, #katalog").attr("disabled", false);
+
     nama_produk = $('input[name="nama_produk"]').val();
     harga_produk = $('input[name="harga"]').val();
     deskripsi_produk = $('textarea[name="deskripsi"]').val();
@@ -77,15 +74,14 @@ $("#edit").click(function() {
 });
 
 $("#cancel").click(function() {
-    $("#edit").css("visibility", "visible");
-    $("#delete").css("visibility", "visible");
-    $("#cancel").css("visibility", "hidden");
-    $(".prev-stock").css("visibility", "hidden");
-    $("input[name = 'gambar']").css("visibility", "hidden");
-    $("input").attr("readonly", true);
-    $("textarea").attr("readonly", true);
-    $(".action-card button").attr("disabled", true);
-    $("#katalog").attr("disabled", true);
+    $("#edit, #delete").css("display", "inline");
+    $("#cancel, .prev-stock, input[name = 'gambar']").attr(
+        "style",
+        "display: none !important"
+    );
+    $("input, textarea").attr("readonly", true);
+    $(".action-card button, #katalog").attr("disabled", true);
+
     $('input[name="nama_produk"]').val(nama_produk);
     $('input[name="harga"]').val(harga_produk);
     $('textarea[name="deskripsi"]').val(deskripsi_produk);

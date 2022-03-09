@@ -72,6 +72,8 @@ body {
     padding-top: 2rem;
     text-align: center;
     text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #a5a23c;
 }
 
 @media only screen and (min-width: 768px) {

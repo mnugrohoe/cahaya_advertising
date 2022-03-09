@@ -109,14 +109,13 @@ function actionCard()
     if ($role == 'admin') {
         echo "
        <div class='UD-action d-flex'>
-                            <div><button type=\"button\" id='edit' name='edit'><i class=\"bi bi-pencil-square\">
+                            <div id='edit'><button type=\"button\" name='edit'><i class=\"bi bi-pencil-square\">
                                         Edit</i></button>
                             </div>
-                            <div class=\"mx-auto\"><button type=\"button\" id='cancel' name='cancel'
-                                    style=\"visibility: hidden;}\"><i class=\"bi bi-x-square\">
+                            <div class=\"ms-auto\" style=\"display: none;}\" id='cancel' ><button type=\"button\" name='cancel' ><i class=\"bi bi-x-square\">
                                         Cancel</i></button>
                             </div>
-                            <div class=\"ms-auto\"><button type=\"button\" id='delete' name='delete'><i class=\"bi bi-trash\">
+                            <div class=\"ms-auto\" id='delete' ><button type=\"button\" name='delete'><i class=\"bi bi-trash\">
                                         Delete</i></button>
                             </div>
                         </div>
@@ -146,10 +145,11 @@ function actionCard()
                                             </svg></button>
                                     </div>
                                 </div>
-                                <div class=\"ms-auto\">Sisa stock: <b id=\"stock\">".$produk["stock"]."</b>
+                                <div style='width:75%' class=\"ms-auto ps-2 d-flex\" 
+                                >Sisa stock:&nbsp<b id=\"stock\">".$produk["stock"]."</b>
                                 </div>
                             </div>
-                            <div class=\"prev-stock d-flex\" style='visibility: hidden'>
+                            <div class=\"prev-stock d-flex\" style='display:none !important'>
                                 <div>Stock Akhir</div>
                                 <div class=\"d-flex ms-auto\">
                                     <div>
@@ -193,7 +193,7 @@ function actionCard()
                                             </svg></button>
                                     </div>
                                 </div>
-                                <div class=\"ms-auto\">Sisa stock: <b id=\"stock\">".$produk["stock"]."</b>
+                                <div class=\"ms-auto ps-2 d-flex\" style=\"width:75%\">Sisa stock:&nbsp<b id=\"stock\">".$produk["stock"]."</b>
                                 </div>
                             </div>
                            <div class=\"sub-total d-flex\">
